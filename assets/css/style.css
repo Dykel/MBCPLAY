@@ -265,6 +265,39 @@ kbd { display: inline-block; min-width: 22px; padding: 1px 6px; margin: 0 2px; b
 }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
+/* ---------- Install banner ---------- */
+.install-banner {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: calc(12px + env(safe-area-inset-bottom));
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+  border-radius: 16px;
+  background: rgba(26, 30, 40, .96);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transform: translateY(140%);
+  transition: transform .3s cubic-bezier(.2, .8, .2, 1);
+}
+.install-banner.show { transform: translateY(0); }
+.install-banner > img { border-radius: 12px; flex: none; }
+.install-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; font-size: 13px; color: var(--muted); }
+.install-text strong { color: var(--text); font-size: 15px; }
+.install-text .share-icon { width: 15px; height: 15px; vertical-align: -2px; color: #4da3ff; }
+.install-close { width: 32px; height: 32px; flex: none; background: transparent; border: 0; color: var(--muted); }
+
+/* Installed app: respect the phone's notch and status bar. */
+@media (display-mode: standalone) {
+  .topbar { padding-top: calc(14px + env(safe-area-inset-top)); }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
   .layout { grid-template-columns: minmax(0, 1fr); }

@@ -27,6 +27,7 @@ A lightweight, open-source web player for the MBC M3U playlist. Nothing to insta
 - **Keyboard shortcuts**, picture-in-picture, fullscreen and media-key support
 - **Auto-reconnect** when a stream drops
 - **Bring your own playlist**: add `?playlist=<url>` to load any M3U file
+- **Installable app (PWA)** for Android, iPhone and desktop, with a home-screen icon, full-screen launch and channel shortcuts
 
 ## 📺 Channels
 
@@ -40,6 +41,15 @@ A lightweight, open-source web player for the MBC M3U playlist. Nothing to insta
 
 ### In the browser
 Open **https://dykel.github.io/MBCPLAY/** and pick a channel.
+
+### 📱 Install it as an app
+MBCPLAY is a Progressive Web App (PWA), so it installs straight from the website. There's no app store involved.
+
+- **Android (Chrome, Edge, Samsung Internet):** open the site and tap **Install** in the pop-up at the bottom, or use the ⬇️ button in the top bar.
+- **iPhone / iPad (Safari):** tap **Share** → **Add to Home Screen**.
+- **Desktop (Chrome / Edge):** click the install icon in the address bar, or the **Install app** button.
+
+The installed app opens full screen with its own icon. Long-press the icon to jump straight to MBC 1, MBC 2, Sports 11 or Radio Rodrigues.
 
 ### In VLC, Kodi, TiviMate or any IPTV app
 Add this playlist URL:
@@ -65,12 +75,15 @@ https://raw.githubusercontent.com/Dykel/MBCPLAY/main/mbc.m3u
 
 ```
 MBCPLAY/
-├── index.html          # Player page
-├── mbc.m3u             # The playlist
+├── index.html              # Player page
+├── mbc.m3u                 # The playlist
+├── manifest.webmanifest    # PWA manifest (name, icons, shortcuts)
+├── sw.js                   # Service worker (app-shell cache; streams are never cached)
 └── assets/
-    ├── css/style.css   # Styles
-    ├── js/app.js       # M3U parser and player logic (hls.js)
-    └── img/favicon.svg # Logo
+    ├── css/style.css       # Styles
+    ├── js/app.js           # M3U parser and player logic (hls.js)
+    ├── js/install.js       # Install button / banner
+    └── img/                # Logo and app icons
 ```
 
 ## 🛠️ Run locally

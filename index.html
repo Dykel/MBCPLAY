@@ -11,6 +11,14 @@
   <meta property="og:description" content="Mauritian TV and radio channels in your browser. Open-source M3U player by Jonathan COLLET.">
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="MBCPLAY">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta property="og:image" content="https://dykel.github.io/MBCPLAY/assets/img/icon-512.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -23,6 +31,10 @@
       <span class="brand-name">MBC<strong>PLAY</strong></span>
     </a>
     <div class="topbar-actions">
+      <button class="btn btn-primary" id="installBtn" type="button" title="Install MBCPLAY as an app" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+        <span>Install app</span>
+      </button>
       <button class="btn btn-ghost" id="copyPlaylist" type="button" title="Copy the M3U playlist URL">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7V5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2M5 8h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2z"/></svg>
         <span>Copy M3U link</span>
@@ -97,9 +109,22 @@
     <p class="shortcuts"><kbd>↑</kbd><kbd>↓</kbd> change channel · <kbd>Space</kbd> play/pause · <kbd>M</kbd> mute · <kbd>F</kbd> fullscreen · <kbd>P</kbd> picture-in-picture</p>
   </footer>
 
+  <div class="install-banner" id="installBanner" role="dialog" aria-labelledby="installTitle" hidden>
+    <img src="assets/img/icon-192.png" alt="" width="48" height="48">
+    <div class="install-text">
+      <strong id="installTitle">Install MBCPLAY</strong>
+      <span id="installHint">Add it to your home screen for one-tap live TV.</span>
+    </div>
+    <button class="btn btn-primary" id="installBannerBtn" type="button">Install</button>
+    <button class="icon-btn install-close" id="installClose" type="button" aria-label="Not now">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js"></script>
   <script src="assets/js/app.js"></script>
+  <script src="assets/js/install.js"></script>
 </body>
 </html>
